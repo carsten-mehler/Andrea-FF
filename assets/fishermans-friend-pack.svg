@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" role="img" aria-labelledby="title desc">
+  <title id="title">Fisherman's Friend Packung</title>
+  <desc id="desc">Gruene Fisherman's Friend Packung als Spiel-Projektil.</desc>
+  <defs>
+    <linearGradient id="pack" x1="36" y1="20" x2="384" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#13965a"/>
+      <stop offset="0.48" stop-color="#087644"/>
+      <stop offset="1" stop-color="#03351f"/>
+    </linearGradient>
+    <linearGradient id="seal" x1="134" y1="62" x2="286" y2="198" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff8df"/>
+      <stop offset="1" stop-color="#e8cf8a"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-18%" width="120%" height="142%">
+      <feDropShadow dx="0" dy="14" stdDeviation="11" flood-color="#00110a" flood-opacity="0.42"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path fill="url(#pack)" d="M33 34c6-12 19-19 33-17l298 40c18 2 31 17 31 35v102c0 19-15 35-34 35H62c-19 0-34-16-34-35V61c0-10 1-19 5-27Z"/>
+    <path fill="#f6e5a5" d="M43 47c6-10 16-16 28-14l286 38c13 2 22 12 22 25v95c0 13-10 23-23 23H64c-13 0-23-10-23-23V61c0-5 1-10 2-14Zm22 13v127h290V98L65 60Z"/>
+    <path fill="#062817" opacity=".36" d="M64 187h292v20H64z"/>
+    <path fill="url(#seal)" d="M210 55c52 0 94 36 94 80s-42 80-94 80-94-36-94-80 42-80 94-80Z"/>
+    <path fill="#0b5f38" d="M210 67c44 0 80 30 80 68s-36 68-80 68-80-30-80-68 36-68 80-68Z"/>
+    <path fill="#f8edc0" d="M210 81c35 0 64 24 64 54s-29 54-64 54-64-24-64-54 29-54 64-54Z"/>
+    <path fill="#0a5131" d="M151 101h118v15H151zM151 154h118v15H151z"/>
+    <text x="210" y="133" fill="#08381f" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="900" text-anchor="middle" letter-spacing="0">FISHERMAN&apos;S</text>
+    <text x="210" y="154" fill="#08381f" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="900" text-anchor="middle" letter-spacing="0">FRIEND</text>
+    <text x="210" y="183" fill="#f8edc0" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" text-anchor="middle" letter-spacing="0">EXTRA STARK</text>
+    <path fill="#f8edc0" opacity=".78" d="M75 69l68 9v18l-68-9zM282 96l58 8v18l-58-8zM75 153h54v15H75zM294 173h46v15h-46z"/>
+  </g>
+</svg>

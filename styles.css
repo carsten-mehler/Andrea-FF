@@ -27,6 +27,7 @@ body {
   background: var(--deep);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
+  touch-action: none;
 }
 
 .game-shell {
@@ -136,37 +137,17 @@ body {
   position: absolute;
   width: 118px;
   height: 72px;
-  border: 3px solid var(--packet-cream);
-  border-radius: 7px;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(255, 246, 221, 0.96) 0 24%, transparent 25%),
-    linear-gradient(135deg, var(--packet) 0 62%, var(--packet-dark) 63% 100%);
   box-shadow: 0 16px 24px rgba(0, 0, 0, 0.28);
 }
 
-.mini-pack::before,
-.mini-pack::after {
-  position: absolute;
-  left: 50%;
-  width: 74px;
-  transform: translateX(-50%);
-  color: var(--packet-dark);
-  text-align: center;
-  font-weight: 900;
-  letter-spacing: 0;
-  line-height: 1;
-  content: "FISH";
-}
-
-.mini-pack::before {
-  top: 22px;
-  font-size: 13px;
-}
-
-.mini-pack::after {
-  top: 36px;
-  font-size: 10px;
-  content: "FRIENDS";
+.mini-pack img,
+.package img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
 }
 
 .pack-one {
@@ -269,40 +250,10 @@ body {
 
 .package {
   position: absolute;
-  width: 94px;
-  height: 58px;
-  border: 3px solid var(--packet-cream);
-  border-radius: 7px;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(255, 246, 221, 0.98) 0 27%, transparent 28%),
-    linear-gradient(135deg, #11a363 0 60%, #075238 61% 100%);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
+  width: 104px;
+  height: 64px;
   will-change: transform, left, top;
-}
-
-.package::before,
-.package::after {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 64px;
-  color: #073b28;
-  text-align: center;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0;
-}
-
-.package::before {
-  top: 18px;
-  font-size: 12px;
-  content: "FISHERMAN";
-}
-
-.package::after {
-  top: 32px;
-  font-size: 10px;
-  content: "FRIENDS";
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.38));
 }
 
 .package.miss {
@@ -368,6 +319,83 @@ body {
 
 .arena.hit .photo-shade {
   animation: hit-flash 280ms ease;
+}
+
+.touch-controls {
+  position: absolute;
+  left: max(14px, env(safe-area-inset-left));
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: none;
+  grid-template-columns: 146px minmax(92px, 130px);
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 46px);
+  grid-template-rows: repeat(3, 46px);
+  gap: 4px;
+}
+
+.control,
+.fire-button {
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 8px;
+  color: #ffffff;
+  background: rgba(5, 18, 22, 0.68);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+  font: 900 18px/1 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+  backdrop-filter: blur(9px);
+  pointer-events: auto;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control:active,
+.control.active,
+.fire-button:active,
+.fire-button.active {
+  color: #06261d;
+  background: rgba(46, 235, 177, 0.92);
+  transform: translateY(1px);
+}
+
+.control {
+  width: 46px;
+  height: 46px;
+}
+
+.control.up {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.control.left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.control.right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.control.down {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.fire-button {
+  min-width: 92px;
+  width: 100%;
+  height: 76px;
+  font-size: 16px;
 }
 
 @keyframes bloom {
@@ -444,17 +472,6 @@ body {
   .mini-pack {
     width: 88px;
     height: 54px;
-    border-width: 2px;
-  }
-
-  .mini-pack::before {
-    top: 16px;
-    font-size: 10px;
-  }
-
-  .mini-pack::after {
-    top: 28px;
-    font-size: 8px;
   }
 
   .pack-two {
@@ -491,5 +508,72 @@ body {
   .crosshair .dot {
     left: 28px;
     top: 28px;
+  }
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 760px) {
+  .touch-controls {
+    display: grid;
+  }
+
+  .arena {
+    min-height: 100dvh;
+  }
+}
+
+@media (max-width: 430px) {
+  .hud {
+    left: 10px;
+    top: 10px;
+    max-width: calc(100vw - 20px);
+  }
+
+  .game-title,
+  .meter {
+    min-height: 36px;
+  }
+
+  .game-title {
+    padding: 0 11px;
+    font-size: 15px;
+  }
+
+  .meter span {
+    font-size: 10px;
+  }
+
+  .meter strong {
+    font-size: 18px;
+  }
+
+  .launcher {
+    display: none;
+  }
+
+  .touch-controls {
+    grid-template-columns: 134px minmax(82px, 112px);
+    gap: 12px;
+  }
+
+  .dpad {
+    grid-template-columns: repeat(3, 42px);
+    grid-template-rows: repeat(3, 42px);
+    gap: 4px;
+  }
+
+  .control {
+    width: 42px;
+    height: 42px;
+  }
+
+  .fire-button {
+    height: 68px;
+    min-width: 82px;
+    font-size: 14px;
+  }
+
+  .package {
+    width: 84px;
+    height: 52px;
   }
 }

@@ -25,9 +25,15 @@
         </header>
 
         <div class="launcher" aria-hidden="true">
-          <div class="mini-pack pack-one"></div>
-          <div class="mini-pack pack-two"></div>
-          <div class="mini-pack pack-three"></div>
+          <div class="mini-pack pack-one">
+            <img src="assets/fishermans-friend-pack.svg" alt="" draggable="false">
+          </div>
+          <div class="mini-pack pack-two">
+            <img src="assets/fishermans-friend-pack.svg" alt="" draggable="false">
+          </div>
+          <div class="mini-pack pack-three">
+            <img src="assets/fishermans-friend-pack.svg" alt="" draggable="false">
+          </div>
         </div>
 
         <div id="effects" class="effects" aria-hidden="true"></div>
@@ -40,6 +46,16 @@
           <span class="line line-left"></span>
           <span class="dot"></span>
         </div>
+
+        <nav class="touch-controls" aria-label="Spielsteuerung">
+          <div class="dpad" aria-label="Fadenkreuz bewegen">
+            <button class="control up" type="button" data-control="ArrowUp" aria-label="Nach oben">^</button>
+            <button class="control left" type="button" data-control="ArrowLeft" aria-label="Nach links">&lt;</button>
+            <button class="control right" type="button" data-control="ArrowRight" aria-label="Nach rechts">&gt;</button>
+            <button class="control down" type="button" data-control="ArrowDown" aria-label="Nach unten">v</button>
+          </div>
+          <button class="fire-button" type="button" data-control="fire" aria-label="Fisherman's Friend abschiessen">FIRE</button>
+        </nav>
       </section>
     </main>
 

@@ -2,8 +2,10 @@ const arena = document.getElementById("arena");
 const crosshair = document.getElementById("crosshair");
 const effects = document.getElementById("effects");
 const photo = document.querySelector(".andrea-photo");
+const touchControls = document.querySelectorAll("[data-control]");
 const hitCount = document.getElementById("hitCount");
 const shotCount = document.getElementById("shotCount");
+const packageImageMarkup = '<img src="assets/fishermans-friend-pack.svg" alt="" draggable="false">';
 
 const PHOTO_RATIO = 4032 / 3024;
 const TARGET_ZONES = [
@@ -119,6 +121,7 @@ function placeCrosshairAtAndrea() {
 function createPackage() {
   const pack = document.createElement("div");
   pack.className = "package";
+  pack.innerHTML = packageImageMarkup;
   return pack;
 }
 
@@ -288,6 +291,62 @@ function handleKeyUp(event) {
   }
 }
 
+function pressControl(button) {
+  const control = button.dataset.control;
+
+  if (!control) {
+    return;
+  }
+
+  arena.focus({ preventScroll: true });
+  button.classList.add("active");
+
+  if (control === "fire") {
+    shoot();
+    return;
+  }
+
+  state.userMoved = true;
+  state.pressed.add(control);
+}
+
+function releaseControl(button) {
+  const control = button.dataset.control;
+
+  button.classList.remove("active");
+
+  if (control && control !== "fire") {
+    state.pressed.delete(control);
+  }
+}
+
+function setupTouchControls() {
+  touchControls.forEach((button) => {
+    button.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+
+      if (button.setPointerCapture) {
+        button.setPointerCapture(event.pointerId);
+      }
+
+      pressControl(button);
+    });
+
+    button.addEventListener("pointerup", (event) => {
+      event.preventDefault();
+      releaseControl(button);
+    });
+
+    button.addEventListener("pointercancel", () => {
+      releaseControl(button);
+    });
+
+    button.addEventListener("lostpointercapture", () => {
+      releaseControl(button);
+    });
+  });
+}
+
 function handleResize() {
   if (state.userMoved) {
     setCrosshairPosition(state.x, state.y);
@@ -302,6 +361,7 @@ window.addEventListener("keyup", handleKeyUp);
 window.addEventListener("resize", handleResize);
 arena.addEventListener("pointerdown", () => arena.focus({ preventScroll: true }));
 photo.addEventListener("load", placeCrosshairAtAndrea, { once: true });
+setupTouchControls();
 
 if (photo.complete) {
   placeCrosshairAtAndrea();
