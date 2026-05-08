@@ -135,7 +135,7 @@ body {
 
 .mini-pack {
   position: absolute;
-  width: 118px;
+  width: 128px;
   height: 72px;
   box-shadow: 0 16px 24px rgba(0, 0, 0, 0.28);
 }
@@ -250,8 +250,8 @@ body {
 
 .package {
   position: absolute;
-  width: 104px;
-  height: 64px;
+  width: 112px;
+  height: 63px;
   will-change: transform, left, top;
   filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.38));
 }
@@ -470,7 +470,7 @@ body {
   }
 
   .mini-pack {
-    width: 88px;
+    width: 96px;
     height: 54px;
   }
 
@@ -573,7 +573,7 @@ body {
   }
 
   .package {
-    width: 84px;
-    height: 52px;
+    width: 88px;
+    height: 49px;
   }
 }

@@ -5,7 +5,7 @@ const photo = document.querySelector(".andrea-photo");
 const touchControls = document.querySelectorAll("[data-control]");
 const hitCount = document.getElementById("hitCount");
 const shotCount = document.getElementById("shotCount");
-const packageImageMarkup = '<img src="assets/fishermans-friend-pack.svg" alt="" draggable="false">';
+const packageImageMarkup = '<img src="Photo/FF.jpg" alt="" draggable="false">';
 
 const PHOTO_RATIO = 4032 / 3024;
 const TARGET_ZONES = [
