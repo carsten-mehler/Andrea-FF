@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Andrea FF</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="game-shell">
+      <section id="arena" class="arena" tabindex="0" aria-label="Andrea FF Spielfeld">
+        <img class="andrea-photo" src="Photo/IMG_1405.JPG" alt="Andrea am Wasser" draggable="false">
+        <div class="photo-shade" aria-hidden="true"></div>
+
+        <header class="hud" aria-live="polite">
+          <div class="game-title">Andrea FF</div>
+          <div class="meter">
+            <span>Treffer</span>
+            <strong id="hitCount">0</strong>
+          </div>
+          <div class="meter">
+            <span>Schuesse</span>
+            <strong id="shotCount">0</strong>
+          </div>
+        </header>
+
+        <div class="launcher" aria-hidden="true">
+          <div class="mini-pack pack-one"></div>
+          <div class="mini-pack pack-two"></div>
+          <div class="mini-pack pack-three"></div>
+        </div>
+
+        <div id="effects" class="effects" aria-hidden="true"></div>
+
+        <div id="crosshair" class="crosshair" aria-hidden="true">
+          <span class="ring"></span>
+          <span class="line line-top"></span>
+          <span class="line line-right"></span>
+          <span class="line line-bottom"></span>
+          <span class="line line-left"></span>
+          <span class="dot"></span>
+        </div>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
